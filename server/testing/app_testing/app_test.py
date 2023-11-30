@@ -2,7 +2,7 @@ from faker import Faker
 import flask
 import pytest
 from random import randint, choice as rc
-
+import ipdb
 from app import app
 from models import db, User, Recipe
 
@@ -209,6 +209,7 @@ class TestLogout:
 
             # check if logged out
             client.delete('/logout')
+            
             with client.session_transaction() as session:
                 assert not session['user_id']
             
